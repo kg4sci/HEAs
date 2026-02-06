@@ -1,3 +1,9 @@
+"""
+
+This module defines the surrogate model ensemble used for
+predicting the stochastic objective (η).
+
+"""
 import numpy as np
 from catboost import CatBoostRegressor
 from typing import List

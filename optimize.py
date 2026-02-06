@@ -1,3 +1,8 @@
+"""
+Utility functions for Pareto dominance checking and
+hypervolume computation under minimization objectives.
+Ensemble-based Expected Hypervolume Improvement (EHVI)
+"""
 import numpy as np
 import pandas as pd
 
@@ -50,7 +55,7 @@ def hypervolume_2d(front: np.ndarray, ref: np.ndarray) -> float:
 def select_candidates_by_ehvi(
     pred_obj1_pool,    
     pred_obj1_train,   
-    obj2_pool,          # [n_pool]
+    obj2_pool,          
     obj2_train,         
     topN: int,
     q: int
@@ -106,7 +111,7 @@ def select_candidates_by_ehvi(
 # ============================================================
 
 def main():
-    print("Loading data ...")
+   
 
     pool_df = pd.read_excel(POOL_PATH)
     X_pool = pool_df.iloc[:, 1:20].values
@@ -115,7 +120,6 @@ def main():
     X_train = train_df.iloc[:, 2:20].values
     y_train_obj1 = train_df.iloc[:, 20].values
 
-    print("Training CatBoost ensemble ...")
 
     models = train_catboost_ensemble(
         X_train,
